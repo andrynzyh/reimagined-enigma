@@ -1,0 +1,8 @@
+{
+  "name": "dmo-field-notes",
+  "private": true,
+  "type": "module",
+  "scripts": {"dev":"astro dev --host 0.0.0.0", "build":"astro build", "preview":"astro preview --host 0.0.0.0"},
+  "dependencies": {"@astrojs/mdx":"latest", "astro":"latest", "fuse.js":"latest"},
+  "devDependencies": {}
+}

@@ -1,0 +1,6 @@
+---
+import Base from '../../layouts/Base.astro'; import '../../styles/global.css'; import { getCollection, render } from 'astro:content';
+export async function getStaticPaths(){const entries=await getCollection('articles',({data})=>!data.draft);return entries.map(entry=>({params:{slug:entry.slug},props:{entry}}));}
+const {entry}=Astro.props; const {Content}=await render(entry); const related=entry.data.related;
+---
+<Base title={`${entry.data.title} | DMO Field Notes`} description={entry.data.description}><article class="article"><p class="breadcrumb"><a href="/wiki">Wiki</a> / {entry.data.category} / {entry.data.title}</p><p class="eyebrow">{entry.data.category} · {entry.data.gameVersion}</p><h1>{entry.data.title}</h1><p class="lede">{entry.data.description}</p><p class="muted">Last updated {entry.data.updated.toISOString().slice(0,10)}</p><div class="article-content"><Content /></div>{related.length>0&&<aside class="section"><h2>Related</h2><ul>{related.map(item=><li><a href={`/wiki/${item}`}>{item}</a></li>)}</ul></aside>}</article></Base>
