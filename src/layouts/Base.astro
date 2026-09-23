@@ -1,0 +1,5 @@
+---
+import '../styles/tokens.css';
+const { title = 'DMO Field Notes', description = 'A fan-maintained reference for Digimon Master Online.' } = Astro.props;
+---
+<!doctype html><html lang="en" data-theme="dark"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><meta name="description" content={description} /><title>{title}</title></head><body><header class="site-header"><a class="wordmark" href="/">DMO <span>FIELD NOTES</span></a><nav aria-label="Primary"><a href="/wiki">Wiki</a><a href="/#about">About DMO</a><button id="theme" type="button" aria-label="Switch theme">Light mode</button></nav></header><main><slot /></main><footer><p>DMO Field Notes is a fan-made guide and is not affiliated with the owners of Digimon or Digimon Master Online. Trademarks belong to their respective owners.</p><a href="/wiki">Open the wiki</a></footer><script is:inline>const root=document.documentElement;const button=document.querySelector('#theme');button?.addEventListener('click',()=>{const light=root.dataset.theme==='light';root.dataset.theme=light?'dark':'light';button.textContent=light?'Light mode':'Dark mode'});</script></body></html>
